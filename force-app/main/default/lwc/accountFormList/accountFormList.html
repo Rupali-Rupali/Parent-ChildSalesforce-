@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Account Form and List">
+        <lightning-layout multiple-rows="true">
+            
+            <!-- Form Column -->
+            <lightning-layout-item size="6">
+                <lightning-card title="Account Form">
+                    <!-- Form content goes here -->
+                    <lightning-input label="Account Name" value={accountName} onchange={handleNameChange}></lightning-input>
+                    <lightning-input label="Phone" value={accountPhone} onchange={handlePhoneChange}></lightning-input>
+                    <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                </lightning-card>
+            </lightning-layout-item>
+
+            <!-- Table Column -->
+            <lightning-layout-item size="6">
+                <lightning-card title="Account List">
+                    <!-- Table content goes here -->
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr>
+                                <th scope="col"><div class="slds-truncate">Account Name</div></th>
+                                <th scope="col"><div class="slds-truncate">Phone</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={accounts} for:item="account">
+                                <tr key={account.Id}>
+                                    <td><div class="slds-truncate">{account.Name}</div></td>
+                                    <td><div class="slds-truncate">{account.Phone}</div></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </lightning-card>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+    </lightning-card>
+</template>

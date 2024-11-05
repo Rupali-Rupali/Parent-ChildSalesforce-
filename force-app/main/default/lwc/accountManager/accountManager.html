@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Account Management" icon-name="standard:account">
+        <div class="slds-grid slds-grid_vertical-align-start">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-record-form 
+                    object-api-name="Account"
+                    layout-type="Full"
+                    mode="edit"
+                    onsuccess={handleSuccess}
+                    onerror={handleError}>
+                </lightning-record-form>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-card title="Account List">
+                    <template if:true={accounts}>
+                        <lightning-datatable
+                            key-field="Id"
+                            data={accounts}
+                            columns={columns}
+                            hide-checkbox-column="true">
+                        </lightning-datatable>
+                    </template>
+                    <template if:true={isLoading}>
+                        <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                    </template>
+                </lightning-card>
+            </div>
+        </div>
+    </lightning-card>
+</template>
